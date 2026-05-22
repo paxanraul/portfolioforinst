@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="ru" class="bg-ink text-paper">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0A0807" />
+<title>Рауль Мамедов — премиальные сайты для бизнеса и частных клиентов</title>
+<meta name="description" content="Freelance веб-разработчик. Создаю свадебные сайты, лендинги, сайты-приглашения и презентационные сайты с вниманием к деталям." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0807'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Georgia,serif' font-size='32' font-style='italic' fill='%23EDE7DD' dominant-baseline='middle'%3ER%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500&display=swap">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#0A0807',
+          paper:  '#EDE7DD',
+          muted:  '#8B8278',
+          line:   'rgba(237,231,221,0.12)',
+          gold:   '#C9A66B'
+        },
+        fontFamily: {
+          display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+          sans:    ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        },
+        letterSpacing: {
+          micro: '0.22em',
+          macro: '-0.04em'
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html, body { background: #0A0807; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #EDE7DD;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; font-variation-settings: "SOFT" 50, "WONK" 0; }
+  .display-italic { font-style: italic; font-variation-settings: "SOFT" 100, "WONK" 1; }
+
+  /* Lenis */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+
+  /* Grain overlay */
+  .grain::before {
+    content:'';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='240' height='240' filter='url(%23n)' opacity='0.7'/></svg>");
+  }
+
+  /* word-mask reveal */
+  .word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.06em; line-height: 1; }
+  .word > span { display: inline-block; transform: translateY(110%); will-change: transform; }
+  .reveal-up { opacity: 0; transform: translateY(24px); will-change: transform, opacity; }
+  .reveal-fade { opacity: 0; will-change: opacity; }
+
+  /* link underline reveal */
+  .link {
+    position: relative;
+    display: inline-block;
+    line-height: 1.2;
+  }
+  .link::before,
+  .link::after {
+    content:'';
+    position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 1px;
+    background: currentColor;
+    transition: transform .85s cubic-bezier(.7,0,.2,1);
+    transform-origin: right center;
+  }
+  .link::after { transform: scaleX(0); transform-origin: left center; transition-delay: .12s; }
+  .link:hover::before { transform: scaleX(0); transform-origin: left center; }
+  .link:hover::after  { transform: scaleX(1); }
+
+  /* Marquee */
+  .marquee { display: flex; overflow: hidden; gap: 0; white-space: nowrap; mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+  .marquee-track { display: inline-flex; align-items: center; gap: 4rem; padding-right: 4rem; }
+
+  /* Browser mockups */
+  .glass {
+    background: linear-gradient(155deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+    border: 1px solid rgba(237,231,221,.08);
+    backdrop-filter: blur(6px);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 999px; background: rgba(237,231,221,.18); }
+
+  /* Cards float */
+  .floaty { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+  .floaty:hover { transform: translateY(-6px); }
+
+  /* dotted divider */
+  .hairline { background: linear-gradient(to right, rgba(237,231,221,.18), rgba(237,231,221,0) 70%); height: 1px; }
+
+  /* pulsing dot */
+  @keyframes pulseDot {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .35; transform: scale(.9); }
+  }
+  .pulse-dot { animation: pulseDot 2.4s ease-in-out infinite; }
+
+  /* selection */
+  ::selection { background: #C9A66B; color: #0A0807; }
+
+  /* scrollbar minimal */
+  ::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* avoid layout shift before fonts */
+  .reveal-ready .word > span,
+  .reveal-ready .reveal-up,
+  .reveal-ready .reveal-fade { transform: none; opacity: 1; }
+
+  /* on small screens — tighter hero */
+  @media (max-width: 640px) {
+    .hero-line { letter-spacing: -0.04em; }
+  }
+
+  /* GSAP-controlled mockup parallax target */
+  .parallax-img { will-change: transform; }
+
+  /* utility */
+  .num { font-family: 'Inter'; font-feature-settings: "tnum" 1, "ss01" 1; font-variation-settings: normal; }
+</style>
+</head>
+<body class="grain antialiased relative">
+
+<!-- ─────────────── NAV ─────────────── -->
+<header class="fixed top-0 inset-x-0 z-50 bg-ink/90 backdrop-blur-md md:bg-transparent md:backdrop-blur-none">
+  <div class="mx-auto max-w-[1480px] px-5 sm:px-8 lg:px-12 pt-5 sm:pt-7 flex items-center justify-between text-[13px] sm:text-sm">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line">
+        <span class="font-display display-italic text-paper text-lg leading-none">R</span>
+      </span>
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="text-paper">Рауль Мамедов</span>
+        <span class="text-muted text-[11px] tracking-micro uppercase">web developer</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-9 text-paper/80">
+      <a href="#about"     class="link">О себе</a>
+      <a href="#services"  class="link">Услуги</a>
+      <a href="#work"      class="link">Проекты</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://t.me/Raul_Mamedoff" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 sm:px-5 sm:py-2.5 text-paper hover:bg-paper hover:text-ink transition-colors duration-700">
+        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold pulse-dot"></span>
+        <span class="text-[12px] sm:text-[13px] tracking-micro uppercase">Telegram</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+        </svg>
+      </a>
+      <!-- burger — mobile only -->
+      <button id="burger" aria-label="Меню" class="md:hidden inline-flex flex-col justify-center items-center gap-[5px] h-9 w-9 rounded-full border border-line">
+        <span class="burger-line block h-px w-4 bg-paper origin-center transition-all duration-400"></span>
+        <span class="burger-line block h-px w-4 bg-paper origin-center transition-all duration-400"></span>
+        <span class="burger-line block h-px w-4 bg-paper origin-center transition-all duration-400"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile drawer -->
+  <div id="mobile-menu" class="md:hidden overflow-hidden" style="max-height:0; transition: max-height .45s cubic-bezier(.7,0,.2,1);">
+    <nav class="px-5 pb-5 pt-4 border-t border-line/30 flex flex-col gap-1">
+      <a href="#about"    class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 border-b border-line/20 hover:text-paper transition-colors duration-300">О себе</a>
+      <a href="#services" class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 border-b border-line/20 hover:text-paper transition-colors duration-300">Услуги</a>
+      <a href="#work"     class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 hover:text-paper transition-colors duration-300">Проекты</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ─────────────── HERO ─────────────── -->
+<section id="top" class="hero relative min-h-svh w-full px-5 sm:px-8 lg:px-12 pt-32 sm:pt-40 pb-14 flex flex-col justify-between">
+
+  <!-- top meta -->
+  <div class="grid grid-cols-12 gap-4 text-[11px] sm:text-xs tracking-micro uppercase text-muted reveal-fade" data-reveal-fade>
+    <div class="col-span-6 sm:col-span-4">
+      <span class="block">© 2026 — Портфолио</span>
+    </div>
+    <div class="hidden sm:block sm:col-span-4 text-center">
+      <span>Москва · Работаю удалённо</span>
+    </div>
+    <div class="col-span-6 sm:col-span-4 text-right">
+      <span class="inline-flex items-center gap-2">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold pulse-dot"></span>
+        Открыт для проектов 2026
+      </span>
+    </div>
+  </div>
+
+  <!-- headline -->
+  <h1 class="font-display font-light text-paper hero-line tracking-macro
+              text-[15vw] sm:text-[12vw] md:text-[10.6vw] lg:text-[9.2vw]
+              leading-[0.92] mt-12 sm:mt-20"
+      data-reveal-words>
+    Премиальные сайты для тех, кто видит <em class="display-italic text-gold/95">детали</em>.
+  </h1>
+
+  <!-- bottom row -->
+  <div class="grid grid-cols-12 gap-4 mt-16 sm:mt-24 items-end">
+    <div class="col-span-12 md:col-span-5 lg:col-span-4 text-paper/75 text-[15px] sm:text-base leading-relaxed reveal-up" data-reveal-up>
+      <p>
+        Freelance веб-разработчик. Создаю свадебные сайты, лендинги, сайты-приглашения и презентационные сайты — медленно, вдумчиво и с вниманием к каждой детали.
+      </p>
+    </div>
+
+    <div class="col-span-12 md:col-span-7 lg:col-span-8 flex md:justify-end">
+      <a href="#work" class="group inline-flex items-center gap-4 text-paper/90 mt-6 md:mt-0">
+        <span class="font-display text-[28px] sm:text-[34px] leading-none tracking-tight">
+          Смотреть <em class="display-italic">работы</em>
+        </span>
+        <span class="inline-flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-line group-hover:bg-paper group-hover:text-ink transition-colors duration-700">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="transition-transform duration-700 group-hover:translate-y-0.5">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="absolute left-1/2 -translate-x-1/2 bottom-4 sm:bottom-6 text-[10px] tracking-micro uppercase text-muted/80 reveal-fade hidden sm:flex flex-col items-center gap-2" data-reveal-fade>
+    <span>прокрутить</span>
+    <span class="block h-8 w-px bg-paper/30 origin-top scale-y-100"></span>
+  </div>
+</section>
+
+
+<!-- ─────────────── MARQUEE ─────────────── -->
+<section class="py-12 sm:py-16 border-y border-line/60 overflow-hidden" aria-hidden="true">
+  <div class="marquee">
+    <div class="marquee-track font-display text-paper/85 text-[12vw] sm:text-[8vw] lg:text-[6.4vw] leading-[1]">
+      <span>свадебные сайты</span>
+      <span class="text-gold">✦</span>
+      <span class="display-italic text-muted">лендинги</span>
+      <span class="text-gold">✦</span>
+      <span>сайты-приглашения</span>
+      <span class="text-gold">✦</span>
+      <span class="display-italic text-muted">презентационные сайты</span>
+      <span class="text-gold">✦</span>
+    </div>
+    <div class="marquee-track font-display text-paper/85 text-[12vw] sm:text-[8vw] lg:text-[6.4vw] leading-[1]" aria-hidden="true">
+      <span>свадебные сайты</span>
+      <span class="text-gold">✦</span>
+      <span class="display-italic text-muted">лендинги</span>
+      <span class="text-gold">✦</span>
+      <span>сайты-приглашения</span>
+      <span class="text-gold">✦</span>
+      <span class="display-italic text-muted">презентационные сайты</span>
+      <span class="text-gold">✦</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────── ABOUT ─────────────── -->
+<section id="about" class="px-5 sm:px-8 lg:px-12 py-24 sm:py-36 lg:py-44">
+  <div class="mx-auto max-w-[1480px]">
+
+    <div class="flex items-center gap-4 text-[11px] tracking-micro uppercase text-muted mb-12 sm:mb-20 reveal-fade" data-reveal-fade>
+      <span class="num">01</span>
+      <span class="h-px w-12 bg-line"></span>
+      <span>Знакомство</span>
+    </div>
+
+    <div class="grid grid-cols-12 gap-y-10 gap-x-8">
+      <div class="col-span-12 lg:col-span-8">
+        <p class="font-display font-light text-paper text-[34px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.04] tracking-macro" data-reveal-words>
+          Меня зовут Рауль. Я делаю сайты, которые ощущаются как <em class="display-italic text-gold/95">ручная работа</em> — вдумчиво, неспешно и точно.
+        </p>
+      </div>
+    </div>
+
+    <!-- photo + intro copy -->
+    <div class="mt-16 sm:mt-24 grid grid-cols-12 gap-y-12 gap-x-8 items-center">
+      <!-- portrait -->
+      <figure class="col-span-12 sm:col-span-5 lg:col-span-5 reveal-up" data-reveal-up>
+        <div class="relative overflow-hidden rounded-2xl border border-line">
+          <img
+            src="assets/raul.jpg"
+            alt="Рауль Мамедов — веб-разработчик"
+            width="1200" height="1600"
+            loading="lazy" decoding="async"
+            class="w-full aspect-[4/5] object-cover"
+            style="object-position: 50% 12%; transform: scale(1.92); transform-origin: 50% 14%; filter: grayscale(0.18) contrast(1.04) brightness(0.95) saturate(0.9);" />
+          <!-- editorial overlays -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/5 to-ink/20"></div>
+          <div class="pointer-events-none absolute inset-0 mix-blend-soft-light bg-gold/10"></div>
+          <figcaption class="absolute bottom-5 left-5 right-5 flex items-center justify-between text-[11px] tracking-micro uppercase text-paper/80">
+            <span>Рауль Мамедов</span>
+            <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold"></span>Москва</span>
+          </figcaption>
+        </div>
+      </figure>
+
+      <!-- copy -->
+      <div class="col-span-12 sm:col-span-7 lg:col-span-7 lg:col-start-6 space-y-6 text-paper/75 text-[15px] sm:text-base leading-relaxed reveal-up" data-reveal-up>
+        <p>
+          Я создаю сайты для тех, кому важны вкус и детали: пары перед свадьбой, частные клиенты, небольшие бренды и студии. Для меня важно не количество проектов, а то, чтобы каждый получился цельным и живым.
+        </p>
+        <p>
+          Без шаблонов и без спешки. Каждый проект — это отдельная история, у которой свой ритм, своя типографика и своё настроение.
+        </p>
+        <p>
+          Я веду работу сам от первого письма до запуска — так проще сохранить идею в деталях и довести её до конца.
+        </p>
+      </div>
+    </div>
+
+    <!-- principles row -->
+    <div class="mt-20 sm:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 border-t border-line pt-10 sm:pt-14">
+      <div class="reveal-up" data-reveal-up>
+        <div class="font-display font-light text-paper text-[26px] sm:text-[32px] leading-tight tracking-macro">С&nbsp;нуля</div>
+        <div class="mt-3 text-[13px] sm:text-sm text-muted leading-relaxed">Каждый проект собираю индивидуально, без шаблонов и конструкторов.</div>
+      </div>
+      <div class="reveal-up" data-reveal-up>
+        <div class="font-display font-light text-paper text-[26px] sm:text-[32px] leading-tight tracking-macro">Лично</div>
+        <div class="mt-3 text-[13px] sm:text-sm text-muted leading-relaxed">Веду проект сам от идеи до запуска — без посредников и потерь смысла.</div>
+      </div>
+      <div class="reveal-up" data-reveal-up>
+        <div class="font-display font-light text-paper text-[26px] sm:text-[32px] leading-tight tracking-macro">Адаптив</div>
+        <div class="mt-3 text-[13px] sm:text-sm text-muted leading-relaxed">Безупречно на телефоне, планшете и десктопе — без компромиссов.</div>
+      </div>
+      <div class="reveal-up" data-reveal-up>
+        <div class="font-display font-light text-paper text-[26px] sm:text-[32px] leading-tight tracking-macro">На&nbsp;связи</div>
+        <div class="mt-3 text-[13px] sm:text-sm text-muted leading-relaxed">Отвечаю быстро и держу в курсе на каждом этапе работы.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────── SERVICES ─────────────── -->
+<section id="services" class="px-5 sm:px-8 lg:px-12 py-24 sm:py-36 lg:py-44 border-t border-line">
+  <div class="mx-auto max-w-[1480px]">
+
+    <div class="flex items-center gap-4 text-[11px] tracking-micro uppercase text-muted mb-12 sm:mb-20 reveal-fade" data-reveal-fade>
+      <span class="num">02</span>
+      <span class="h-px w-12 bg-line"></span>
+      <span>Услуги</span>
+    </div>
+
+    <div class="grid grid-cols-12 gap-y-8 mb-16 sm:mb-24">
+      <h2 class="col-span-12 lg:col-span-9 font-display font-light text-paper text-[44px] sm:text-[60px] md:text-[80px] lg:text-[96px] leading-[0.98] tracking-macro" data-reveal-words>
+        Что я создаю <em class="display-italic text-gold/95">для&nbsp;вас</em>.
+      </h2>
+    </div>
+
+    <ul class="divide-y divide-line border-t border-line">
+      <!-- 01 -->
+      <li class="group service-row py-7 sm:py-10 grid grid-cols-12 gap-4 items-baseline cursor-default">
+        <span class="col-span-2 md:col-span-1 text-muted text-[11px] tracking-micro uppercase num pt-2">01</span>
+        <h3 class="col-span-10 md:col-span-4 font-display font-light text-paper text-[28px] sm:text-[36px] md:text-[44px] leading-[1.02] tracking-macro">
+          Свадебные сайты
+        </h3>
+        <p class="col-span-12 md:col-span-6 md:col-start-7 text-paper/70 text-[15px] sm:text-base leading-relaxed">
+          Камерные сайты, где гости узнают историю пары, программу дня, оставляют пожелания и подтверждают присутствие. Атмосферно и без лишнего.
+        </p>
+      </li>
+      <!-- 02 -->
+      <li class="group service-row py-7 sm:py-10 grid grid-cols-12 gap-4 items-baseline cursor-default">
+        <span class="col-span-2 md:col-span-1 text-muted text-[11px] tracking-micro uppercase num pt-2">02</span>
+        <h3 class="col-span-10 md:col-span-4 font-display font-light text-paper text-[28px] sm:text-[36px] md:text-[44px] leading-[1.02] tracking-macro">
+          Лендинги <em class="display-italic text-muted">·</em> Landing pages
+        </h3>
+        <p class="col-span-12 md:col-span-6 md:col-start-7 text-paper/70 text-[15px] sm:text-base leading-relaxed">
+          Посадочные страницы с фокусом на доверие и конверсию. Для бизнеса, частной практики и небольших премиальных брендов.
+        </p>
+      </li>
+      <!-- 03 -->
+      <li class="group service-row py-7 sm:py-10 grid grid-cols-12 gap-4 items-baseline cursor-default">
+        <span class="col-span-2 md:col-span-1 text-muted text-[11px] tracking-micro uppercase num pt-2">03</span>
+        <h3 class="col-span-10 md:col-span-4 font-display font-light text-paper text-[28px] sm:text-[36px] md:text-[44px] leading-[1.02] tracking-macro">
+          Сайты-приглашения
+        </h3>
+        <p class="col-span-12 md:col-span-6 md:col-start-7 text-paper/70 text-[15px] sm:text-base leading-relaxed">
+          Элегантные digital-приглашения для свадеб, помолвок и приватных событий. С анимацией, формой ответа и индивидуальным дизайном.
+        </p>
+      </li>
+      <!-- 04 -->
+      <li class="group service-row py-7 sm:py-10 grid grid-cols-12 gap-4 items-baseline cursor-default">
+        <span class="col-span-2 md:col-span-1 text-muted text-[11px] tracking-micro uppercase num pt-2">04</span>
+        <h3 class="col-span-10 md:col-span-4 font-display font-light text-paper text-[28px] sm:text-[36px] md:text-[44px] leading-[1.02] tracking-macro">
+          Презентационные сайты
+        </h3>
+        <p class="col-span-12 md:col-span-6 md:col-start-7 text-paper/70 text-[15px] sm:text-base leading-relaxed">
+          Сайты-визитки для брендов, агентств и творческих проектов. Сдержанная подача, выверенная типографика, цельный визуальный язык.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ─────────────── WORK / PORTFOLIO ─────────────── -->
+<section id="work" class="px-5 sm:px-8 lg:px-12 py-24 sm:py-36 lg:py-44 border-t border-line">
+  <div class="mx-auto max-w-[1480px]">
+
+    <div class="flex items-center gap-4 text-[11px] tracking-micro uppercase text-muted mb-12 sm:mb-20 reveal-fade" data-reveal-fade>
+      <span class="num">03</span>
+      <span class="h-px w-12 bg-line"></span>
+      <span>Избранные проекты</span>
+    </div>
+
+    <div class="grid grid-cols-12 gap-y-8 mb-20 sm:mb-28">
+      <h2 class="col-span-12 lg:col-span-10 font-display font-light text-paper text-[44px] sm:text-[60px] md:text-[80px] lg:text-[96px] leading-[0.98] tracking-macro" data-reveal-words>
+        Истории, рассказанные <em class="display-italic text-gold/95">через&nbsp;экран</em>.
+      </h2>
+    </div>
+
+    <!-- PROJECT 01 — rafaelelvira.ru -->
+    <article class="project mb-28 sm:mb-40 last:mb-0">
+      <div class="grid grid-cols-12 gap-y-8 gap-x-8">
+        <div class="col-span-12 lg:col-span-5 order-2 lg:order-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-[11px] tracking-micro uppercase text-muted mb-6">
+              <span class="num">— 01</span>
+              <span class="h-px w-8 bg-line"></span>
+              <span>Свадебный сайт</span>
+            </div>
+            <h3 class="font-display font-light text-paper text-[40px] sm:text-[56px] md:text-[64px] leading-[0.98] tracking-macro reveal-up" data-reveal-up>
+              Rafael <span class="display-italic text-muted">&amp;</span> Elvira
+            </h3>
+            <p class="mt-8 text-paper/70 text-[15px] sm:text-base leading-relaxed max-w-md reveal-up" data-reveal-up>
+              Свадебный сайт пары — место, где гости погружаются в их историю, узнают программу дня и оставляют тёплые пожелания. Камерная подача, выдержанная типографика, кинематографичный ритм.
+            </p>
+            <dl class="mt-10 grid grid-cols-2 gap-y-6 text-[12px] tracking-micro uppercase text-muted max-w-md reveal-up" data-reveal-up>
+              <div><dt class="text-muted/70">Год</dt><dd class="mt-1 text-paper/85 num">2026</dd></div>
+              <div><dt class="text-muted/70">Формат</dt><dd class="mt-1 text-paper/85">Wedding website</dd></div>
+              <div><dt class="text-muted/70">Стек</dt><dd class="mt-1 text-paper/85">Tailwind · GSAP</dd></div>
+              <div><dt class="text-muted/70">Ритм</dt><dd class="mt-1 text-paper/85">Editorial</dd></div>
+            </dl>
+          </div>
+
+          <a href="https://rafaelelvira.ru" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 mt-12 self-start">
+            <span class="link font-display text-[22px] sm:text-[26px] leading-none">
+              rafaelelvira.ru
+            </span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line group-hover:bg-paper group-hover:text-ink transition-colors duration-700">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="col-span-12 lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
+          <a href="https://rafaelelvira.ru" target="_blank" rel="noopener" class="block floaty">
+            <div class="glass rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)] parallax-img" data-parallax="-6">
+              <div class="flex items-center gap-2 px-4 py-3 border-b border-line">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="ml-4 text-[11px] tracking-micro uppercase text-muted">rafaelelvira.ru</span>
+              </div>
+              <div class="relative aspect-[4/5] overflow-hidden bg-ink">
+                <img src="assets/rafaelelvira.jpeg" alt="Свадебный сайт-приглашение Rafael & Elvira"
+                     width="709" height="1280" loading="lazy" decoding="async"
+                     class="w-full h-full object-cover object-top" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent"></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 02 — gunay-weddingsevents.ru -->
+    <article class="project">
+      <div class="grid grid-cols-12 gap-y-8 gap-x-8">
+        <div class="col-span-12 lg:col-span-7 order-1">
+          <a href="https://gunay-weddingsevents.ru" target="_blank" rel="noopener" class="block floaty">
+            <div class="glass rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)] parallax-img" data-parallax="-10">
+              <div class="flex items-center gap-2 px-4 py-3 border-b border-line">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="ml-4 text-[11px] tracking-micro uppercase text-muted">gunay-weddingsevents.ru</span>
+              </div>
+              <div class="relative aspect-[16/10] overflow-hidden bg-ink">
+                <img src="assets/gunay.jpeg" alt="Сайт свадебного агентства Gunay Wedding & Events"
+                     width="1280" height="771" loading="lazy" decoding="async"
+                     class="w-full h-full object-cover object-top" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent"></div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-span-12 lg:col-span-4 lg:col-start-9 order-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-[11px] tracking-micro uppercase text-muted mb-6">
+              <span class="num">— 02</span>
+              <span class="h-px w-8 bg-line"></span>
+              <span>Презентационный сайт</span>
+            </div>
+            <h3 class="font-display font-light text-paper text-[40px] sm:text-[56px] md:text-[64px] leading-[0.98] tracking-macro reveal-up" data-reveal-up>
+              Gunay <span class="display-italic text-muted">Wedding &amp; Events</span>
+            </h3>
+            <p class="mt-8 text-paper/70 text-[15px] sm:text-base leading-relaxed reveal-up" data-reveal-up>
+              Презентационный сайт свадебного агентства полного цикла. Эстетика, услуги и портфолио выстроены в одну элегантную историю, ведущую к личному контакту.
+            </p>
+            <dl class="mt-10 grid grid-cols-2 gap-y-6 text-[12px] tracking-micro uppercase text-muted reveal-up" data-reveal-up>
+              <div><dt class="text-muted/70">Год</dt><dd class="mt-1 text-paper/85 num">2026</dd></div>
+              <div><dt class="text-muted/70">Формат</dt><dd class="mt-1 text-paper/85">Studio website</dd></div>
+              <div><dt class="text-muted/70">Стек</dt><dd class="mt-1 text-paper/85">Tailwind · GSAP</dd></div>
+              <div><dt class="text-muted/70">Ритм</dt><dd class="mt-1 text-paper/85">Cinematic</dd></div>
+            </dl>
+          </div>
+
+          <a href="https://gunay-weddingsevents.ru" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 mt-12 self-start">
+            <span class="link font-display text-[20px] sm:text-[24px] leading-none">
+              gunay-weddingsevents.ru
+            </span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line group-hover:bg-paper group-hover:text-ink transition-colors duration-700">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <p class="mt-24 sm:mt-32 text-center text-paper/55 text-[13px] tracking-micro uppercase reveal-fade" data-reveal-fade>
+      Полное портфолио — по запросу в <a href="https://t.me/Raul_Mamedoff" target="_blank" rel="noopener" class="link text-paper">Telegram</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ─────────────── CONTACT ─────────────── -->
+<section id="contact" class="relative px-5 sm:px-8 lg:px-12 py-28 sm:py-44 lg:py-56 border-t border-line overflow-hidden">
+
+  <!-- decorative -->
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[900px] max-h-[900px] rounded-full bg-gold/[0.06] blur-3xl pointer-events-none"></div>
+
+  <div class="mx-auto max-w-[1480px] relative">
+
+    <div class="flex items-center gap-4 text-[11px] tracking-micro uppercase text-muted mb-12 sm:mb-20 reveal-fade" data-reveal-fade>
+      <span class="num">05</span>
+      <span class="h-px w-12 bg-line"></span>
+      <span>Контакт</span>
+    </div>
+
+    <h2 class="font-display font-light text-paper tracking-macro
+                text-[14vw] sm:text-[11vw] lg:text-[9.4vw] leading-[0.93]" data-reveal-words>
+      Расскажите о своём <em class="display-italic text-gold/95">проекте</em>.
+    </h2>
+
+    <div class="grid grid-cols-12 gap-y-10 gap-x-8 mt-14 sm:mt-20 items-end">
+      <div class="col-span-12 lg:col-span-5 text-paper/75 text-[15px] sm:text-base leading-relaxed reveal-up" data-reveal-up>
+        <p>
+          Отвечаю в течение дня. В Telegram удобнее всего — там можно сразу прислать референсы, ссылки и обсудить сроки.
+        </p>
+      </div>
+
+      <div class="col-span-12 lg:col-span-7 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 lg:justify-end">
+        <!-- Telegram -->
+        <a href="https://t.me/Raul_Mamedoff" target="_blank" rel="noopener" class="group inline-flex items-center justify-between sm:justify-start gap-5 sm:gap-7 rounded-full border border-line pl-6 pr-3 py-3 sm:py-4 hover:bg-paper hover:text-ink transition-colors duration-700">
+          <span class="inline-flex items-center gap-3">
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-gold pulse-dot"></span>
+            <span class="font-display text-[24px] sm:text-[28px] leading-none">
+              Написать в <em class="display-italic">Telegram</em>
+            </span>
+          </span>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-paper text-ink group-hover:bg-ink group-hover:text-paper border border-paper transition-colors duration-700">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+            </svg>
+          </span>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/paxan_raul/" target="_blank" rel="noopener" class="group inline-flex items-center justify-between sm:justify-start gap-5 sm:gap-7 rounded-full border border-line pl-6 pr-3 py-3 sm:py-4 hover:bg-paper hover:text-ink transition-colors duration-700">
+          <span class="inline-flex items-center gap-3">
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-gold/60"></span>
+            <span class="font-display text-[24px] sm:text-[28px] leading-none">
+              Написать в <em class="display-italic">Direct</em>
+            </span>
+          </span>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-paper text-ink group-hover:bg-ink group-hover:text-paper border border-paper transition-colors duration-700">
+            <!-- Instagram icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────── FOOTER ─────────────── -->
+<footer class="px-5 sm:px-8 lg:px-12 py-10 sm:py-14 border-t border-line">
+  <div class="mx-auto max-w-[1480px] grid grid-cols-12 gap-6 items-center text-[12px] tracking-micro uppercase text-muted">
+    <div class="col-span-12 md:col-span-4">
+      © 2026 — Рауль Мамедов
+    </div>
+    <div class="col-span-12 md:col-span-4 md:text-center text-paper/70">
+      Создано с вниманием к деталям
+    </div>
+    <div class="col-span-12 md:col-span-4 md:text-right flex md:justify-end gap-5">
+      <a href="https://t.me/Raul_Mamedoff" target="_blank" rel="noopener" class="link text-paper">Telegram</a>
+      <a href="https://www.instagram.com/paxan_raul/" target="_blank" rel="noopener" class="link text-paper">Instagram</a>
+      <a href="#top" class="link text-paper">Наверх</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ─────────────── LIBS ─────────────── -->
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+  /* ─── helpers ─────────────────────────────────────────── */
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+  /* split text by words while preserving inline <em> nodes */
+  function splitWords(el) {
+    const walk = (node) => {
+      const out = [];
+      node.childNodes.forEach(n => {
+        if (n.nodeType === Node.TEXT_NODE) {
+          const parts = n.textContent.split(/(\s+)/);
+          parts.forEach(p => {
+            if (!p) return;
+            if (/^\s+$/.test(p)) {
+              out.push(document.createTextNode(' '));
+            } else {
+              const wrap = document.createElement('span');
+              wrap.className = 'word';
+              const inner = document.createElement('span');
+              inner.textContent = p;
+              wrap.appendChild(inner);
+              out.push(wrap);
+            }
+          });
+        } else if (n.nodeType === Node.ELEMENT_NODE) {
+          // wrap whole inline element as a single word (preserves <em>)
+          const wrap = document.createElement('span');
+          wrap.className = 'word';
+          const inner = document.createElement('span');
+          // recursively split inside <em> too so its content animates
+          const child = n.cloneNode(true);
+          inner.appendChild(child);
+          wrap.appendChild(inner);
+          out.push(wrap);
+        }
+      });
+      return out;
+    };
+    const replaced = walk(el);
+    el.innerHTML = '';
+    replaced.forEach(n => el.appendChild(n));
+  }
+
+  /* ─── Lenis smooth scroll ─────────────────────────────── */
+  const lenis = new Lenis({
+    duration: 1.15,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+    touchMultiplier: 1.4,
+    wheelMultiplier: 1
+  });
+  window.lenis = lenis;
+
+  /* ─── GSAP + ScrollTrigger plumbing ───────────────────── */
+  gsap.registerPlugin(ScrollTrigger);
+
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  /* anchor smooth scroll via Lenis */
+  $$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#' || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const hh = document.querySelector('header')?.offsetHeight ?? 80;
+      lenis.scrollTo(target, { offset: -(hh + 16), duration: 1.25 });
+    });
+  });
+
+  /* ─── Prep splits before showing anything ─────────────── */
+  $$('[data-reveal-words]').forEach(el => splitWords(el));
+
+  /* mark page ready (CSS fallback shows content if JS fails) */
+  document.documentElement.classList.add('reveal-ready');
+
+  /* ─── HERO timeline (autoplay) ────────────────────────── */
+  const heroEl = document.querySelector('#top');
+  const heroWords = heroEl.querySelectorAll('[data-reveal-words] .word > span');
+  const heroFades = heroEl.querySelectorAll('[data-reveal-fade]');
+  const heroUps   = heroEl.querySelectorAll('[data-reveal-up]');
+
+  gsap.set(heroWords, { yPercent: 110 });
+  gsap.set(heroFades, { autoAlpha: 0 });
+  gsap.set(heroUps,   { y: 24, autoAlpha: 0 });
+
+  const tl = gsap.timeline({ defaults: { ease: 'expo.out' }, delay: 0.15 });
+  tl.to(heroFades, { autoAlpha: 1, duration: 1.0, stagger: 0.06 }, 0)
+    .to(heroWords, { yPercent: 0, duration: 1.4, stagger: 0.045 }, 0.05)
+    .to(heroUps,   { y: 0, autoAlpha: 1, duration: 1.2, stagger: 0.08 }, 0.5);
+
+  /* ─── Section reveals on scroll ───────────────────────── */
+  $$('section').forEach(section => {
+    if (section.id === 'top') return;
+
+    const words = section.querySelectorAll('[data-reveal-words] .word > span');
+    if (words.length) {
+      gsap.set(words, { yPercent: 110 });
+      gsap.to(words, {
+        yPercent: 0,
+        duration: 1.3,
+        ease: 'expo.out',
+        stagger: 0.04,
+        scrollTrigger: { trigger: section, start: 'top 78%', once: true }
+      });
+    }
+
+    const ups = section.querySelectorAll('[data-reveal-up]');
+    if (ups.length) {
+      gsap.set(ups, { y: 30, autoAlpha: 0 });
+      gsap.to(ups, {
+        y: 0, autoAlpha: 1,
+        duration: 1.1,
+        ease: 'expo.out',
+        stagger: 0.08,
+        scrollTrigger: { trigger: section, start: 'top 80%', once: true }
+      });
+    }
+
+    const fades = section.querySelectorAll('[data-reveal-fade]');
+    if (fades.length) {
+      gsap.set(fades, { autoAlpha: 0 });
+      gsap.to(fades, {
+        autoAlpha: 1,
+        duration: 1.2,
+        ease: 'sine.out',
+        stagger: 0.06,
+        scrollTrigger: { trigger: section, start: 'top 82%', once: true }
+      });
+    }
+  });
+
+  /* ─── Service rows: subtle stagger on hover ───────────── */
+  $$('.service-row').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      gsap.to(row, { x: 8, duration: 0.7, ease: 'expo.out' });
+      gsap.to(row.querySelectorAll('h3, p, span'), { color: '#EDE7DD', duration: 0.4, ease: 'sine.out' });
+    });
+    row.addEventListener('mouseleave', () => {
+      gsap.to(row, { x: 0, duration: 0.9, ease: 'expo.out' });
+    });
+  });
+
+  /* ─── Project mockup parallax ─────────────────────────── */
+  $$('.parallax-img').forEach(el => {
+    const depth = parseFloat(el.dataset.parallax || '-6');
+    gsap.to(el, {
+      yPercent: depth,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  });
+
+  /* ─── Marquee endless track ───────────────────────────── */
+  $$('.marquee').forEach(marquee => {
+    const tracks = marquee.querySelectorAll('.marquee-track');
+    if (!tracks.length) return;
+    gsap.to(tracks, {
+      xPercent: -100,
+      duration: 38,
+      ease: 'none',
+      repeat: -1
+    });
+  });
+
+  /* ─── Floating nav hide on scroll down / show on up ───── */
+  const header = document.querySelector('header');
+  let lastY = 0;
+  ScrollTrigger.create({
+    start: 0,
+    end: 'max',
+    onUpdate: (self) => {
+      const y = self.scroll();
+      if (y > 80 && y > lastY) header.style.transform = 'translateY(-110%)';
+      else header.style.transform = 'translateY(0)';
+      lastY = y;
+    }
+  });
+  header.style.transition = 'transform .6s cubic-bezier(.7,0,.2,1)';
+
+
+  /* ─── Respect reduced-motion ──────────────────────────── */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.globalTimeline.timeScale(2.4);
+    lenis.options.smoothWheel = false;
+  }
+
+  /* ─── Burger menu ──────────────────────────────────────── */
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const burgerLines = burger.querySelectorAll('.burger-line');
+  let menuOpen = false;
+
+  burger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    // animate drawer
+    mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0';
+    // animate lines → X
+    if (menuOpen) {
+      burgerLines[0].style.transform = 'translateY(6px) rotate(45deg)';
+      burgerLines[1].style.opacity = '0';
+      burgerLines[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+    } else {
+      burgerLines[0].style.transform = '';
+      burgerLines[1].style.opacity = '';
+      burgerLines[2].style.transform = '';
+    }
+  });
+
+  // close menu when a nav link is clicked
+  $$('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.maxHeight = '0';
+      burgerLines[0].style.transform = '';
+      burgerLines[1].style.opacity = '';
+      burgerLines[2].style.transform = '';
+    });
+  });
+</script>
+
+</body>
+</html>

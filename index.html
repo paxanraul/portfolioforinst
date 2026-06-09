@@ -240,6 +240,7 @@
       <a href="#about"     class="link">О себе</a>
       <a href="#services"  class="link">Услуги</a>
       <a href="#work"      class="link">Проекты</a>
+      <a href="#contact"   class="link">Контакты</a>
     </nav>
 
     <div class="flex items-center gap-3">
@@ -264,7 +265,8 @@
     <nav class="px-5 pb-5 pt-4 border-t border-line/30 flex flex-col gap-1">
       <a href="#about"    class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 border-b border-line/20 hover:text-paper transition-colors duration-300">О себе</a>
       <a href="#services" class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 border-b border-line/20 hover:text-paper transition-colors duration-300">Услуги</a>
-      <a href="#work"     class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 hover:text-paper transition-colors duration-300">Проекты</a>
+      <a href="#work"     class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 border-b border-line/20 hover:text-paper transition-colors duration-300">Проекты</a>
+      <a href="#contact"  class="mobile-nav-link text-[13px] tracking-micro uppercase text-paper/70 py-3 hover:text-paper transition-colors duration-300">Контакты</a>
     </nav>
   </div>
 </header>
@@ -644,6 +646,62 @@
       </div>
     </article>
 
+    <!-- PROJECT 03 — emilsevda.ru -->
+    <article class="project mt-28 sm:mt-40">
+      <div class="grid grid-cols-12 gap-y-8 gap-x-8">
+        <div class="col-span-12 lg:col-span-5 order-2 lg:order-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 text-[11px] tracking-micro uppercase text-muted mb-6">
+              <span class="num">— 03</span>
+              <span class="h-px w-8 bg-line"></span>
+              <span>Свадебный сайт</span>
+            </div>
+            <h3 class="font-display font-light text-paper text-[40px] sm:text-[56px] md:text-[64px] leading-[0.98] tracking-macro reveal-up" data-reveal-up>
+              Emil <span class="display-italic text-muted">&amp;</span> Sevda
+            </h3>
+            <p class="mt-8 text-paper/70 text-[15px] sm:text-base leading-relaxed max-w-md reveal-up" data-reveal-up>
+              Элегантное свадебное приглашение с живым обратным отсчётом, интерактивной картой банкетного зала «Наполеон» и кинематографичной подачей деталей торжества. Камерная романтика, выдержанная в тёплых тонах.
+            </p>
+            <dl class="mt-10 grid grid-cols-2 gap-y-6 text-[12px] tracking-micro uppercase text-muted max-w-md reveal-up" data-reveal-up>
+              <div><dt class="text-muted/70">Год</dt><dd class="mt-1 text-paper/85 num">2026</dd></div>
+              <div><dt class="text-muted/70">Формат</dt><dd class="mt-1 text-paper/85">Wedding invitation</dd></div>
+              <div><dt class="text-muted/70">Стек</dt><dd class="mt-1 text-paper/85">Tailwind · JS</dd></div>
+              <div><dt class="text-muted/70">Ритм</dt><dd class="mt-1 text-paper/85">Romantic</dd></div>
+            </dl>
+          </div>
+
+          <a href="https://emilsevda.ru" target="_blank" rel="noopener" class="magnetic group/link inline-flex items-center gap-3 mt-12 self-start">
+            <span class="link font-display text-[22px] sm:text-[26px] leading-none">
+              emilsevda.ru
+            </span>
+            <span class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-line overflow-hidden transition-colors duration-700 group-hover/link:border-paper">
+              <span class="absolute inset-0 rounded-full bg-paper scale-0 group-hover/link:scale-100 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"></span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="relative transition-transform duration-700 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-ink">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="col-span-12 lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
+          <a href="https://emilsevda.ru" target="_blank" rel="noopener" class="group block floaty">
+            <div class="glass rounded-2xl overflow-hidden parallax-img" data-parallax="-6">
+              <div class="flex items-center gap-2 px-4 py-3 border-b border-line">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="ml-4 text-[11px] tracking-micro uppercase text-muted">emilsevda.ru</span>
+              </div>
+              <div class="relative aspect-[4/5] overflow-hidden bg-ink img-reveal">
+                <img src="assets/emilsevda.jpeg" alt="Свадебное приглашение Emil & Sevda"
+                     width="709" height="1280" loading="lazy" decoding="async"
+                     class="img-zoom w-full h-full object-cover object-top" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent"></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+
     <p class="mt-24 sm:mt-32 text-center text-paper/55 text-[13px] tracking-micro uppercase reveal-fade" data-reveal-fade>
       Полное портфолио — по запросу в <a href="https://t.me/Raul_Mamedoff" target="_blank" rel="noopener" class="link text-paper">Telegram</a>
     </p>
@@ -706,6 +764,21 @@
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
               <circle cx="12" cy="12" r="4"/>
               <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+        </a>
+        <!-- Phone -->
+        <a href="tel:+79998503275" class="magnetic group inline-flex items-center justify-between sm:justify-start gap-5 sm:gap-7 rounded-full border border-line pl-6 pr-3 py-3 sm:py-4 hover:bg-paper hover:text-ink transition-colors duration-700">
+          <span class="inline-flex items-center gap-3">
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-gold/40"></span>
+            <span class="font-display text-[24px] sm:text-[28px] leading-none">
+              Позвонить
+            </span>
+          </span>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-paper text-ink group-hover:bg-ink group-hover:text-paper border border-paper transition-colors duration-700">
+            <!-- Phone icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
           </span>
         </a>
